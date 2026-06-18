@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="prose-wrap">
+  <div class="page-intro page-intro--left">
+    <div class="monogram" aria-hidden="true">{{ range $i, $w := split .Site.Params.author " " }}{{ if lt $i 2 }}{{ substr $w 0 1 }}{{ end }}{{ end }}</div>
+    <span class="kicker" style="display:block;margin-top:var(--sp-5);margin-bottom:var(--sp-3)">{{ .Title }}</span>
+    <h1>{{ .Site.Params.author }}</h1>
+  </div>
+  <div class="prose">
+    {{ .Content }}
+    <dl class="about-facts">
+      {{ range .Params.facts }}
+      <div class="fact"><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>
+      {{ end }}
+      <div class="fact">
+        <dt>{{ i18n "about_elsewhere" }}</dt>
+        <dd>{{ with hugo.Data.social.linkedin }}<a class="link" href="{{ . }}" target="_blank" rel="noopener" data-umami-event="click-linkedin-profile">LinkedIn</a>{{ end }}</dd>
+      </div>
+    </dl>
+  </div>
+</div>
+{{ end }}

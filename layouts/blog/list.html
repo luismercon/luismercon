@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="wrap">
+  <div class="page-intro">
+    <span class="kicker">{{ .Site.Params.homeKicker }}</span>
+    <h1>{{ .Title }}</h1>
+  </div>
+  {{ $paginator := .Paginate (.Pages.ByDate.Reverse) 10 }}
+  {{ partial "post-list.html" $paginator.Pages }}
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination" aria-label="Pagination">
+    {{ if $paginator.HasPrev }}
+    <a class="arrow-link arrow-link--back" href="{{ $paginator.Prev.URL }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 6l-6 6 6 6"/></svg> {{ i18n "newer" }}
+    </a>
+    {{ end }}
+    {{ if $paginator.HasNext }}
+    <a class="arrow-link" href="{{ $paginator.Next.URL }}">{{ i18n "older" }}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 6l6 6-6 6"/></svg>
+    </a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</div>
+{{ end }}

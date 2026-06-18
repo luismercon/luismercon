@@ -1,0 +1,27 @@
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="{{ i18n "open_menu" }}" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+    </button>
+    <a class="wordmark site-brand" href="{{ "/" | relLangURL }}">{{ .Site.Params.author }}</a>
+    <nav class="nav nav--primary" aria-label="Primary">
+      <ul class="nav__links">
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL | relLangURL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+    {{ partial "language-switcher.html" . }}
+    <button class="icon-btn theme-toggle" id="themeBtn" aria-label="{{ i18n "toggle_theme" }}">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+    </button>
+  </div>
+  <div class="nav__drawer" id="drawer">
+    <ul>
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</header>

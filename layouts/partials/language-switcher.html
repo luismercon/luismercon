@@ -1,0 +1,5 @@
+{{ if .IsTranslated }}
+  {{ range .Translations }}
+    <a class="icon-btn lang-switch" href="{{ .RelPermalink }}" aria-label="{{ i18n "language_label" }}" title="{{ .Language.Label }}">{{ upper (substr .Language.Lang 0 2) }}</a>
+  {{ end }}
+{{ end }}

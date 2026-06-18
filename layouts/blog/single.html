@@ -1,0 +1,73 @@
+{{ define "main" }}
+{{ $content := .Content }}
+{{ $headings := slice }}
+{{ range .Fragments.Headings }}{{ $headings = .Headings }}{{ end }}
+<div class="wrap">
+  <div style="padding-top: var(--sp-4)">
+    <a class="arrow-link arrow-link--back" href="{{ .Parent.RelPermalink }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 6l-6 6 6 6"/></svg> {{ i18n "all_writing" }}
+    </a>
+  </div>
+
+  <div class="article-layout">
+    {{ if $headings }}
+    <aside class="article-aside">
+      <nav class="toc" aria-label="{{ i18n "toc_label" }}">
+        <p class="toc__label">{{ i18n "toc_label" }}</p>
+        <ol>
+          {{ range $headings }}
+          <li><a href="#{{ .ID }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ol>
+      </nav>
+    </aside>
+    {{ end }}
+
+    <div class="article-main">
+      <header class="article-header">
+        {{ with .Params.tags }}<span class="kicker">{{ delimit . " · " }}</span>{{ end }}
+        <h1 class="article-title">{{ .Title }}</h1>
+        {{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}
+        <div class="article-byline">
+          <span>{{ $.Site.Params.author }}</span><span class="dot"></span>
+          <span>{{ .Date.Format "Jan 2006" }}</span><span class="dot"></span>
+          <span>{{ .ReadingTime }} {{ i18n "min_read" }}</span>
+        </div>
+      </header>
+
+      <div class="prose">
+        {{ $content }}
+      </div>
+
+      {{ with .GetTerms "tags" }}
+      <hr class="rule--ornament">
+      <p class="muted" style="font-size: var(--fs-small)">
+        {{ i18n "filed_under" }}
+        {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a class="link" href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}.
+      </p>
+      {{ end }}
+
+      {{ if or .PrevInSection .NextInSection }}
+      <nav class="pagination" aria-label="Post navigation" style="border-top:1px solid var(--rule); margin-top: var(--sp-7)">
+        {{ with .PrevInSection }}
+        <a class="arrow-link arrow-link--back" href="{{ .RelPermalink }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 6l-6 6 6 6"/></svg> {{ .Title }}
+        </a>
+        {{ end }}
+        {{ with .NextInSection }}
+        <a class="arrow-link" href="{{ .RelPermalink }}">{{ .Title }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 6l6 6-6 6"/></svg>
+        </a>
+        {{ end }}
+      </nav>
+      {{ end }}
+
+      {{ if .IsTranslated }}
+      <p class="muted" style="font-size: var(--fs-small); margin-top: var(--sp-5)">
+        {{ range .Translations }}<a class="link" href="{{ .RelPermalink }}">{{ .Language.Label }}</a>{{ end }}
+      </p>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

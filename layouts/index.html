@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="wrap">
+  <div class="page-intro">
+    <span class="kicker">{{ .Site.Params.homeKicker }}</span>
+    <h1>{{ .Site.Params.homeTitle }}</h1>
+    <p>{{ .Site.Params.homeIntro }}</p>
+  </div>
+  {{ with .Site.GetPage "/blog" }}
+  {{ partial "post-list.html" .RegularPages.ByDate.Reverse }}
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,22 @@
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('luis-theme');
+    if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {}
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="author" content="{{ .Site.Params.author }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&amp;display=swap" rel="stylesheet">
+
+{{ $tokens := resources.Get "css/tokens.css" }}
+{{ $main := resources.Get "css/main.css" }}
+<link rel="stylesheet" href="{{ $tokens.RelPermalink }}">
+<link rel="stylesheet" href="{{ $main.RelPermalink }}">

@@ -85,7 +85,7 @@ Design tokens and visual direction come from a **Claude Design handoff bundle**.
 **Then**
 - Blog posts resolve to `/blog/:slug/`
 - Social media posts resolve to `/socialmedia/:sections[1:]/:slug/`
-- The main menu contains three entries in order: Blog (`/blog/`), Social Media (`/socialmedia/`), About (`/about/`)
+- The main menu contains four entries in order: Writing (`/blog/`), Social Media (`/socialmedia/`), Topics (`/tags/`), About (`/about/`) — see SPEC-040 for Topics. "Writing" labels the blog section per the Claude Design bundle's copy (SPEC-038); it is the same `/blog/` section as elsewhere in this document
 
 ---
 
@@ -212,45 +212,57 @@ Optional body text appears as context above the embed.
 
 **Given** the file `assets/css/tokens.css`
 **When** design tokens are defined
-**Then** the file declares CSS custom properties on `:root` covering:
+**Then** the file declares CSS custom properties sourced from the Claude Design handoff bundle (project
+"Luis Brand", imported via the Claude Design connector — see SPEC-038), covering:
 
-**Colors (light):**
-`--color-bg`, `--color-surface`, `--color-text`, `--color-text-muted`, `--color-accent`, `--color-accent-hover`, `--color-border`, `--color-code-bg`
+**Type families:**
+`--font-serif` (Spectral), `--font-sans` (IBM Plex Sans), `--font-mono` (IBM Plex Mono)
 
-**Colors (dark):**
-`--color-bg-dark`, `--color-surface-dark`, `--color-text-dark`, `--color-text-muted-dark`, `--color-accent-dark`, `--color-accent-hover-dark`, `--color-border-dark`, `--color-code-bg-dark`
+**Fluid type scale** (mobile-first, `clamp()`-based — grows continuously with viewport width instead of
+jumping at fixed breakpoints):
+`--fs-meta`, `--fs-small`, `--fs-body`, `--fs-lead`, `--fs-h3`, `--fs-h2`, `--fs-h1`, `--fs-display`
 
-**Typography:**
-- `--font-heading`, `--font-body`: `"Inter", system-ui, sans-serif`
-- `--font-mono`: `"JetBrains Mono", "Fira Code", monospace`
-- Scale: `--text-xs` (0.75rem) through `--text-4xl` (2.25rem)
-- Line heights: `--line-height-tight` (1.25), `--line-height-normal` (1.6), `--line-height-loose` (1.8)
-- Weights: `--font-weight-normal` (400), `--font-weight-medium` (500), `--font-weight-semibold` (600), `--font-weight-bold` (700)
+**Line heights & tracking:**
+`--lh-tight` (1.1), `--lh-snug` (1.3), `--lh-body` (1.74), `--tracking-wide` (0.16em), `--tracking-mono` (0.04em)
 
-**Spacing (4px scale):**
-`--space-1` (0.25rem) through `--space-24` (6rem)
+**Spacing (0.25rem base):**
+`--sp-1` through `--sp-10`
+
+**Radii:**
+`--radius-xs`, `--radius-sm`, `--radius`, `--radius-pill`
 
 **Layout:**
-- `--max-width-content`: 42rem (ideal reading width)
-- `--max-width-page`: 64rem (max site width)
-- `--border-radius`: 0.375rem
+`--maxw-prose` (42rem, reading measure), `--maxw-wide` (74rem, listings/index pages), `--gutter` (fluid
+horizontal padding via `clamp()`)
 
-**Transitions:**
-`--transition-fast` (150ms ease), `--transition-base` (250ms ease)
+**Motion:**
+`--ease`, `--dur`
 
-**Note:** These are fallback defaults. If a Claude Design handoff bundle is provided, its tokens replace these values.
+**Color tokens** (theme-switched — see SPEC-013): `--bg`, `--bg-grad`, `--bg-elev`, `--surface`,
+`--surface-2`, `--text-strong`, `--text`, `--text-soft`, `--muted`, `--rule`, `--rule-strong`, `--accent`,
+`--accent-strong`, `--accent-quiet`, `--warm`, `--warm-quiet`, `--shadow`, `--selection`
+
+**Note:** These supersede the original fallback token names/values. Other spec sections below may still
+reference the old names (`--color-bg`, `--text-4xl`, `--space-4`, etc.) — treat those as referring to this
+token set instead, and check `assets/css/tokens.css` for the authoritative current names when implementing.
 
 ---
 
 <a id="spec-013"></a>
-### SPEC-013 — Dark Mode
+### SPEC-013 — Theme Toggle (Dark/Light)
 
-**Given** the design tokens in `tokens.css`
-**When** the user's system has `prefers-color-scheme: dark` active
+**Given** the design tokens in `tokens.css` define both a dark and a light palette
+**When** a visitor loads the site or clicks the theme toggle button in the header
 **Then**
-- All light-mode color tokens are swapped to their dark equivalents via a `@media (prefers-color-scheme: dark)` rule
-- There is no manual toggle — it respects the OS preference
-- All components render correctly in both modes
+- The active theme is controlled by a `data-theme` attribute on `<html>`, set to `"dark"` (default) or `"light"`
+- A toggle button (sun/moon icon) in the header (SPEC-016/SPEC-017) switches themes via a small inline script
+- The chosen theme is persisted in `localStorage` and restored on the next visit
+- If no preference is stored, the site defaults to dark (`data-theme="dark"`)
+- All components render correctly in both themes
+
+**Note:** This replaces the original OS-only (`prefers-color-scheme`) approach with no toggle — the Claude
+Design handoff bundle specifies a manual toggle defaulting to dark, matching the source LinkedIn banner's
+navy/parchment mood.
 
 ---
 
@@ -260,9 +272,13 @@ Optional body text appears as context above the embed.
 **Given** the `<head>` of any page
 **When** fonts are loaded
 **Then**
-- Inter is loaded from Google Fonts with weights 400, 500, 600, 700
-- JetBrains Mono is loaded from Google Fonts with weight 400 only
-- Both use `font-display: swap` to avoid FOIT (Flash of Invisible Text)
+- Three Google Fonts families are loaded: Spectral (weights 200/300/400/500, plus italic 300/400), IBM
+  Plex Sans (weights 300/400/500/600), IBM Plex Mono (weights 300/400/500)
+- `<link rel="preconnect">` is used for `fonts.googleapis.com` and `fonts.gstatic.com` (the latter with
+  `crossorigin`)
+- The Google Fonts CSS2 endpoint is used with `display=swap` to avoid FOIT (Flash of Invisible Text)
+- The exact `<link>` markup is in the Claude Design handoff bundle's `Blog.html`; wired into
+  `layouts/partials/head.html` when the base layout is built (SPEC-015)
 
 ---
 
@@ -359,10 +375,13 @@ Optional body text appears as context above the embed.
 **Given** a visitor navigates to a blog post URL (e.g., `/blog/meu-post/`)
 **When** the single post page is rendered
 **Then**
-- The title is displayed in `var(--text-4xl)`
+- The title is displayed using the post-title token (`--fs-h1`, see SPEC-012)
 - Post metadata is shown: formatted date, estimated reading time, tags
-- The body text is constrained to `max-width: var(--max-width-content)`, centered
-- Body font-size is `var(--text-lg)` with `var(--line-height-normal)`
+- The body text is constrained to `max-width: var(--maxw-prose)`, centered
+- Body font-size is `var(--fs-body)` with `var(--lh-body)`
+- A table of contents (built from the post's headings) is shown: as a boxed callout above the article on
+  narrow viewports, and as a sticky rail to the left of the article on viewports ≥ 960px — new scope from
+  the Claude Design handoff (SPEC-038), not in the original spec set
 - Code blocks use Hugo's built-in Chroma syntax highlighting (Dracula theme)
 - Images are responsive with `max-width: 100%`
 - At the end of the post, a link to the translated version is shown (if it exists)
@@ -611,6 +630,21 @@ Non-blog pages do not include this block.
 
 ---
 
+<a id="spec-040"></a>
+### SPEC-040 — Topics (Tags) Taxonomy Pages
+
+**Given** blog posts with a `tags` frontmatter field (SPEC-008)
+**When** a visitor navigates to `/tags/` (or `/en/tags/`)
+**Then**
+- A tag cloud is displayed: every tag used by at least one non-draft post, each showing its post count
+- The page is reachable from the main menu under the label "Topics" (SPEC-003), even though the underlying
+  Hugo taxonomy and URL remain `tags` / `/tags/`
+- Navigating to `/tags/<tag>/` (or `/en/tags/<tag>/`) shows all non-draft posts carrying that tag, sorted
+  by date (most recent first), using the same card format as the blog listing page (SPEC-020)
+- Added as part of the Claude Design handoff (SPEC-038); not in the original spec set
+
+---
+
 ## Reference: URL Map
 
 | Content | pt-BR (default) | English |
@@ -620,6 +654,8 @@ Non-blog pages do not include this block.
 | Blog post | `/blog/<slug-pt>/` | `/en/blog/<slug-en>/` |
 | Social media listing | `/socialmedia/` | `/en/socialmedia/` |
 | LinkedIn embed | `/socialmedia/linkedin/YYYYMMDDHHmm/` | `/en/socialmedia/linkedin/YYYYMMDDHHmm/` |
+| Topics (tags) | `/tags/` | `/en/tags/` |
+| Topic (single tag) | `/tags/<tag>/` | `/en/tags/<tag>/` |
 | About | `/about/` | `/en/about/` |
 | RSS (blog) | `/blog/index.xml` | `/en/blog/index.xml` |
 
@@ -656,15 +692,18 @@ permalinks:
 
 menus:
   main:
-    - name: "Blog"
+    - name: "Writing"
       url: "/blog/"
       weight: 1
     - name: "Social Media"
       url: "/socialmedia/"
       weight: 2
+    - name: "Topics"
+      url: "/tags/"
+      weight: 3
     - name: "About"
       url: "/about/"
-      weight: 3
+      weight: 4
 
 outputs:
   home: ["HTML", "RSS"]
@@ -696,6 +735,7 @@ markup:
 13. SPEC-024 — About page
 14. SPEC-019 — Homepage
 15. SPEC-032, SPEC-033, SPEC-034 — Responsive breakpoints
-16. SPEC-035 — GitHub Actions deployment
-17. Sample content: 1 bilingual blog post + 1 social media embed
-18. Validate: Lighthouse audit, Open Graph debugger, RSS validator
+16. SPEC-040 — Topics (tags) taxonomy pages
+17. SPEC-035 — GitHub Actions deployment
+18. Sample content: 1 bilingual blog post + 1 social media embed
+19. Validate: Lighthouse audit, Open Graph debugger, RSS validator

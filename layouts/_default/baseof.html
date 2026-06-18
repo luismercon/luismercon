@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+{{ partial "header.html" . }}
+<main>
+{{ block "main" . }}{{ end }}
+</main>
+{{ partial "footer.html" . }}
+<script>
+(function () {
+  var root = document.documentElement;
+  var THEME_KEY = 'luis-theme';
+  function setTheme(t) {
+    if (t === 'light') { root.setAttribute('data-theme', 'light'); } else { root.removeAttribute('data-theme'); }
+    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+  }
+  var themeBtn = document.getElementById('themeBtn');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+  }
+  var menuBtn = document.getElementById('menuBtn'), drawer = document.getElementById('drawer');
+  if (menuBtn && drawer) {
+    menuBtn.addEventListener('click', function () {
+      var open = drawer.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+  }
+})();
+</script>
+</body>
+</html>

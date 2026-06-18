@@ -1,0 +1,6 @@
+{{ define "main" }}
+<div class="wrap">
+  <p class="kicker" style="padding-top:var(--sp-5);border-top:1px solid var(--rule)">{{ i18n "nav_topics" }} — {{ .Title }} &middot; {{ len .Pages }}</p>
+  {{ partial "post-list.html" .Pages.ByDate.Reverse }}
+</div>
+{{ end }}
