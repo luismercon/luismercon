@@ -1,0 +1,48 @@
+baseURL: "https://luismercon.github.io/blog/"
+title: "Luis Merçon"
+defaultContentLanguage: "pt-br"
+defaultContentLanguageInSubdir: false
+
+languages:
+  pt-br:
+    label: "Português"
+    weight: 1
+    params:
+      description: "Engenheiro de Software com mentalidade de negócios e formação em Direito | Engenharia orientada por IA na Critical Software | Mestrando em Engenharia Informática no ISEC"
+  en:
+    label: "English"
+    weight: 2
+    params:
+      description: "Business-Minded Software Engineer with a Legal Background | AI-Driven Engineering at Critical Software | MSc Candidate in Computer Engineering at ISEC"
+
+params:
+  author: "Luis Merçon"
+  linkedin: "https://www.linkedin.com/in/luismercon/"
+
+permalinks:
+  blog: "/blog/:slug/"
+  socialmedia: "/socialmedia/:sections[1:]/:slug/"
+
+menus:
+  main:
+    - name: "Blog"
+      url: "/blog/"
+      weight: 1
+    - name: "Social Media"
+      url: "/socialmedia/"
+      weight: 2
+    - name: "About"
+      url: "/about/"
+      weight: 3
+
+outputs:
+  home: ["HTML", "RSS"]
+  section: ["HTML", "RSS"]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: "dracula"
+    lineNos: true
