@@ -78,7 +78,7 @@ outdated and is left as-is per project convention (BACKLOG.md is the status/devi
 - [ ] ~~SPEC-040 — Topics (Tags) Taxonomy Pages~~ — **dropped**: built and verified working, then removed by user decision — the user doesn't plan to use tags on blog posts. No `/tags/` route, templates, content, or `tags:` frontmatter field exist
 
 ## 17. Deployment
-- [ ] [SPEC-035 — GitHub Actions Deployment](SPECS.md#spec-035)
+- [x] [SPEC-035 — GitHub Actions Deployment](SPECS.md#spec-035) — `.github/workflows/deploy.yml`; verified green run in the Actions tab and the live site at https://luismercon.github.io/luismercon/ (homepage, blog post, `/en/`, RSS feed all return 200; CSS/Umami script resolve correctly under the `/luismercon/` base path)
 
 ## 18. Sample content
 - [x] One bilingual blog post (pt-BR + en, see SPEC-008/SPEC-009) — "Sobre Refatorar Sistemas que Herdamos" / "On Refactoring Systems You Inherit"
