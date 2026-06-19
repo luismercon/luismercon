@@ -8,18 +8,18 @@ languages:
     label: "Português"
     weight: 1
     params:
-      description: "Engenheiro de Software com mentalidade de negócios e formação em Direito | Engenharia orientada por IA na Critical Software | Mestrando em Engenharia Informática no ISEC"
+      description: "Engenheiro de Software com mentalidade de negócios e formação em Direito | Engenharia orientada por IA | Mestrando em Engenharia Informática no ISEC"
       homeKicker: "Ensaios e notas de campo"
       homeTitle: "Escrevendo sobre software, devagar."
-      homeIntro: "Notas sobre modernizar os sistemas que herdamos, e sobre trabalhar lado a lado com máquinas que agora também escrevem código."
+      homeIntro: "Notas sobre construir software ao lado de máquinas que escrevem código, carreiras não-lineares, e coisas que ficam entre o técnico e o filosófico."
   en:
     label: "English"
     weight: 2
     params:
-      description: "Business-Minded Software Engineer with a Legal Background | AI-Driven Engineering at Critical Software | MSc Candidate in Computer Engineering at ISEC"
+      description: "Business-Minded Software Engineer with a Legal Background | AI-Driven Engineering | MSc Candidate in Computer Engineering at ISEC"
       homeKicker: "Essays & field notes"
       homeTitle: "Writing on software, slowly."
-      homeIntro: "Notes on modernising the systems we inherit, and working alongside machines that now write code too."
+      homeIntro: "Notes on building software alongside machines that write code, non-linear careers, and things that sit between the technical and the philosophical."
 
 params:
   author: "Luis Merçon"
@@ -31,7 +31,7 @@ permalinks:
 
 menus:
   main:
-    - name: "Writing"
+    - name: "Blog"
       url: "/blog/"
       weight: 1
     - name: "Social Media"
