@@ -24,6 +24,9 @@ languages:
 params:
   author: "Luis Merçon"
   linkedin: "https://www.linkedin.com/in/luismercon/"
+  umami:
+    websiteId: "ce54d349-bcdd-4647-b89d-c6f99bb3f812"
+    src: "https://cloud.umami.is/script.js"
 
 permalinks:
   blog: "/blog/:slug/"

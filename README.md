@@ -57,6 +57,6 @@ before assuming a feature exists. `CLAUDE.md` has a higher-level architecture su
 AI) picking up the next round of work.
 
 As of now: the core site (layout, header/footer, theme toggle, homepage, blog listing/post pages, About),
-SEO meta tags, and full-content RSS are implemented and verified. Social Media and Topics (tags) were built
-and then deliberately removed — see `specs/BACKLOG.md` groups 12/16. Still open: analytics and the GitHub
-Actions deploy workflow.
+SEO meta tags, full-content RSS, and Umami analytics are implemented and verified. Social Media and Topics
+(tags) were built and then deliberately removed — see `specs/BACKLOG.md` groups 12/16. Still open: the
+GitHub Actions deploy workflow.

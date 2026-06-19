@@ -1,0 +1,5 @@
+{{ with .Site.Params.umami }}
+{{ if and .websiteId .src }}
+<script defer src="{{ .src }}" data-website-id="{{ .websiteId }}"></script>
+{{ end }}
+{{ end }}

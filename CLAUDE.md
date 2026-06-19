@@ -5,12 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project state
 
 This is a bilingual personal blog built with Hugo, in progress. The core site renders end-to-end: base
-layout, header/footer, language switcher, dark/light toggle, homepage, and blog listing + post (with TOC)
-and About page are implemented and build clean with `hugo --minify`. Social Media and Topics (tags) were
-tried and then deliberately removed — see `specs/BACKLOG.md` groups 12/16 for why; not re-adding either
-without explicit direction. Not yet implemented: SEO meta (canonical/OG/hreflang/JSON-LD), full-content RSS,
-Umami analytics script, GitHub Actions deployment, and `static/images/` (logo, favicon, OG image). See
-`specs/BACKLOG.md` for the exact per-spec status — check it before assuming something is or isn't done.
+layout, header/footer, language switcher, dark/light toggle, homepage, blog listing + post (with TOC), About
+page, SEO meta (canonical/OG/hreflang/JSON-LD), full-content RSS, and Umami analytics are all implemented and
+build clean with `hugo --minify`. Social Media and Topics (tags) were tried and then deliberately removed —
+see `specs/BACKLOG.md` groups 12/16 for why; not re-adding either without explicit direction. Not yet
+implemented: GitHub Actions deployment and `static/images/` (logo, favicon, OG image — see SPEC-002 caveat
+in BACKLOG.md). See `specs/BACKLOG.md` for the exact per-spec status — check it before assuming something is
+or isn't done.
 
 `specs/SPECS.md` is the source of truth. It is written as a series of Given/When/Then specs (SPEC-001
 through SPEC-040) plus a suggested implementation order at the bottom of the file. Before implementing any

@@ -27,8 +27,8 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 - [x] [SPEC-029 — RSS Feed](SPECS.md#spec-029) — custom `layouts/_default/rss.xml` adds `content:encoded` (full post HTML in CDATA) alongside the existing summary `description`, serves both `/index.xml` (site-level, via `site.RegularPages`) and `/blog/index.xml` (section-level); RSS autodiscovery `<link>` added to `head.html`; all three feeds (pt-br, en, home) verified well-formed XML. Note: literal `<?xml ?>` and `<![CDATA[`/`]]>` text needed `| safeHTML` — Hugo's html/template auto-escaper HTML-entity-encodes any `<` not followed by a recognized tag-start character
 
 ## 6. Analytics
-- [ ] [SPEC-030 — Umami Analytics Script](SPECS.md#spec-030) — no Umami account/website ID yet; `partials/analytics.html` not created
-- [ ] [SPEC-031 — Analytics Event Tracking](SPECS.md#spec-031) — `data-umami-event` added to footer LinkedIn/RSS links and the About page LinkedIn link; ahead of SPEC-030, no events actually fire until the Umami script is installed. The social-media-post tracking mentioned in SPEC-031 no longer applies — see group 12
+- [x] [SPEC-030 — Umami Analytics Script](SPECS.md#spec-030) — `layouts/partials/analytics.html`, included from `head.html`; renders only when `params.umami.websiteId`/`src` are set in `hugo.yaml`; verified both that the tag renders with real values and that it's absent when the params are removed
+- [x] [SPEC-031 — Analytics Event Tracking](SPECS.md#spec-031) — `data-umami-event` on footer LinkedIn/RSS links and the About page LinkedIn link now actually fires events with SPEC-030 wired up. The "links to original social media posts" requirement in SPEC-031's text no longer applies — Social Media was removed (see group 12); nothing to track there
 
 ## 7. Header, mobile menu, language switcher
 - [x] [SPEC-016 — Header (Desktop)](SPECS.md#spec-016) — `layouts/partials/header.html`
