@@ -7,7 +7,7 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 ## 1. Project init, structure, config
 - [x] [SPEC-001 — Hugo Project Initialization](SPECS.md#spec-001) — `hugo.yaml` builds clean with `hugo --minify`
 - [ ] [SPEC-002 — Directory Structure](SPECS.md#spec-002) — `content/`, `layouts/`, `assets/css/`, `archetypes/`, `i18n/` now exist; favicon/og-default images are generated via Hugo Pipes from `assets/images/favicon.png` (no `static/images/`, no `logo.svg`/`favicon.ico` — see CLAUDE.md/head.html) ; `.github/workflows/` still missing (group 17)
-- [x] [SPEC-003 — Permalink Configuration](SPECS.md#spec-003) — permalinks + 4-item main menu (incl. Topics, see SPEC-040) set in `hugo.yaml`
+- [x] [SPEC-003 — Permalink Configuration](SPECS.md#spec-003) — `hugo.yaml` has the blog permalink and a 2-item main menu (Blog, About). SPECS.md describes a 4-item menu incl. Social Media and Topics; both were built and then deliberately removed by the user (see groups 12/16) — SPECS.md is left as-is per project convention, treat this entry as the current authority on the menu, not SPEC-003's text
 
 ## 2. Design tokens, dark mode, fonts
 - [x] [SPEC-012 — CSS Design Tokens](SPECS.md#spec-012) — `assets/css/tokens.css` ported from the Claude Design bundle ("Luis Brand"); `assets/css/main.css` also written (Direction A "Essay" baked in)
@@ -28,7 +28,7 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 
 ## 6. Analytics
 - [ ] [SPEC-030 — Umami Analytics Script](SPECS.md#spec-030) — no Umami account/website ID yet; `partials/analytics.html` not created
-- [ ] [SPEC-031 — Analytics Event Tracking](SPECS.md#spec-031) — `data-umami-event` already added to footer LinkedIn/RSS links and the About page LinkedIn link, ahead of SPEC-030; social-media-post tracking pending group 12
+- [ ] [SPEC-031 — Analytics Event Tracking](SPECS.md#spec-031) — `data-umami-event` added to footer LinkedIn/RSS links and the About page LinkedIn link; ahead of SPEC-030, no events actually fire until the Umami script is installed. The social-media-post tracking mentioned in SPEC-031 no longer applies — see group 12
 
 ## 7. Header, mobile menu, language switcher
 - [x] [SPEC-016 — Header (Desktop)](SPECS.md#spec-016) — `layouts/partials/header.html`
@@ -46,16 +46,16 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 ## 10. Content models and archetypes
 - [x] [SPEC-008 — Blog Post Content Model (pt-BR)](SPECS.md#spec-008) — real post matches the contract
 - [x] [SPEC-009 — Blog Post Content Model (English)](SPECS.md#spec-009) — real `.en.md` translation with `slug` override
-- [x] [SPEC-010 — Social Media Embed Content Model](SPECS.md#spec-010) — model encoded in `archetypes/socialmedia.md`; no actual post authored yet (group 18)
-- [x] [SPEC-011 — Content Archetypes](SPECS.md#spec-011) — `archetypes/blog.md` + `archetypes/socialmedia.md`
+- [ ] ~~SPEC-010 — Social Media Embed Content Model~~ — **dropped**: the Social Media feature was tried (first per-post content files, then a data-driven single page) and then removed entirely by user decision (see group 12); no content model exists or is planned
+- [x] [SPEC-011 — Content Archetypes](SPECS.md#spec-011) — `archetypes/blog.md` only; `archetypes/socialmedia.md` was deleted along with the rest of the Social Media feature (group 12)
 
 ## 11. Blog templates
 - [x] [SPEC-020 — Blog Listing Page](SPECS.md#spec-020) — `layouts/blog/list.html`, reuses `partials/post-list.html`
 - [x] [SPEC-021 — Blog Post Page](SPECS.md#spec-021) — `layouts/blog/single.html`; TOC via `.Fragments.Headings` (new scope from the handoff, see CLAUDE.md)
 
 ## 12. Social media templates
-- [ ] [SPEC-022 — Social Media Listing Page](SPECS.md#spec-022) — not in the Claude Design bundle; still needs its own design pass
-- [ ] [SPEC-023 — Social Media Embed Page](SPECS.md#spec-023)
+- [ ] ~~SPEC-022 — Social Media Listing Page~~ — **dropped**: built as a grouped-by-platform listing, then rebuilt as a single data-driven embed page, then abandoned entirely by user decision. No `/socialmedia/` route, templates, or content exist
+- [ ] ~~SPEC-023 — Social Media Embed Page~~ — **dropped**, same decision as SPEC-022 above; never had per-post permalink pages in the final (also abandoned) design, and now nothing under `/socialmedia/` exists at all
 
 ## 13. About page
 - [x] [SPEC-024 — About Page](SPECS.md#spec-024) — `layouts/about/list.html` (monogram, facts list); content in `content/about/_index.md` + `_index.en.md`
@@ -69,14 +69,14 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 - [ ] [SPEC-034 — Responsive Layout: Desktop](SPECS.md#spec-034) — same caveat
 
 ## 16. Topics (tags) taxonomy
-- [x] [SPEC-040 — Topics (Tags) Taxonomy Pages](SPECS.md#spec-040) — `layouts/_default/taxonomy.html` + `term.html`; verified both tags render with correct counts
+- [ ] ~~SPEC-040 — Topics (Tags) Taxonomy Pages~~ — **dropped**: built and verified working, then removed by user decision — the user doesn't plan to use tags on blog posts. No `/tags/` route, templates, content, or `tags:` frontmatter field exist
 
 ## 17. Deployment
 - [ ] [SPEC-035 — GitHub Actions Deployment](SPECS.md#spec-035)
 
 ## 18. Sample content
 - [x] One bilingual blog post (pt-BR + en, see SPEC-008/SPEC-009) — "Sobre Refatorar Sistemas que Herdamos" / "On Refactoring Systems You Inherit"
-- [ ] One social media embed (see SPEC-010)
+- [ ] ~~One social media embed~~ — n/a, Social Media was dropped (see group 12)
 
 ## 19. Final validation
 - [ ] Lighthouse audit
@@ -88,5 +88,5 @@ Not part of the numbered build sequence — describe ongoing author workflows an
 one-time build artifact. Check off once the workflow has been exercised at least once / the doc exists.
 - [x] [SPEC-039 — CLAUDE.md Project File](SPECS.md#spec-039) — done, `CLAUDE.md` exists at repo root
 - [ ] [SPEC-036 — Blog Post Publication Workflow](SPECS.md#spec-036)
-- [ ] [SPEC-037 — Social Media Publication Workflow](SPECS.md#spec-037)
+- [ ] ~~SPEC-037 — Social Media Publication Workflow~~ — **dropped**, Social Media was removed entirely (see group 12); no publication workflow exists or is needed
 - [x] [SPEC-038 — Claude Design Handoff Workflow](SPECS.md#spec-038) — exercised end-to-end: imported project "Luis Brand" via the Claude Design connector, tokens translated into `assets/css/`, templates built following the bundle

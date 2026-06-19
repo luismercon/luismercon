@@ -27,22 +27,17 @@ params:
 
 permalinks:
   blog: "/blog/:slug/"
-  socialmedia: "/socialmedia/:sections[1:]/:slug/"
+
+taxonomies: {}
 
 menus:
   main:
     - name: "Blog"
       url: "/blog/"
       weight: 1
-    - name: "Social Media"
-      url: "/socialmedia/"
-      weight: 2
-    - name: "Topics"
-      url: "/tags/"
-      weight: 3
     - name: "About"
       url: "/about/"
-      weight: 4
+      weight: 2
 
 outputs:
   home: ["HTML", "RSS"]

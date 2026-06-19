@@ -2,7 +2,6 @@
 title: "De advogado a programador: como mudei minha carreira profissional"
 date: 2021-09-01T10:16:44+01:00
 description: "Esse texto não é um roteiro. Não é um manual. Não há intenção de ensinar nada. É apenas um relato de como eu mudei de carreira profissional e me tornei programador, após 13 anos trabalhando como advogado."
-tags: []
 draft: false
 canonicalURL: ""
 images: []

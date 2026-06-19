@@ -25,7 +25,6 @@
 
     <div class="article-main">
       <header class="article-header">
-        {{ with .Params.tags }}<span class="kicker">{{ delimit . " · " }}</span>{{ end }}
         <h1 class="article-title">{{ .Title }}</h1>
         {{ with .Description }}<p class="article-lead">{{ . }}</p>{{ end }}
         <div class="article-byline">
@@ -38,14 +37,6 @@
       <div class="prose">
         {{ $content }}
       </div>
-
-      {{ with .GetTerms "tags" }}
-      <hr class="rule--ornament">
-      <p class="muted" style="font-size: var(--fs-small)">
-        {{ i18n "filed_under" }}
-        {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a class="link" href="{{ $t.RelPermalink }}">{{ $t.LinkTitle }}</a>{{ end }}.
-      </p>
-      {{ end }}
 
       {{ if or .PrevInSection .NextInSection }}
       <nav class="pagination" aria-label="Post navigation" style="border-top:1px solid var(--rule); margin-top: var(--sp-7)">

@@ -2,7 +2,6 @@
 title: "From Lawyer to Programmer: How I Changed My Professional Career"
 date: 2021-09-01T10:16:44+01:00
 description: "This is not a script. It's not a manual. Don't take it as a step-by-step of how to change careers. I don't mean to teach anything. It's just the story of how I changed careers and became a programmer, after a 13-year career as a lawyer."
-tags: []
 draft: false
 canonicalURL: ""
 images: []

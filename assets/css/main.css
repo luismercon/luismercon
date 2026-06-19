@@ -234,25 +234,6 @@ small, .meta { font-size: var(--fs-meta); }
 .arrow-link--back:hover svg { transform: translateX(-3px); }
 
 /* ============================================================
-   TAGS / CHIPS
-   ============================================================ */
-.tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
-.tag {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: var(--fs-meta);
-  letter-spacing: var(--tracking-mono);
-  color: var(--muted);
-  padding: 0.32em 0.7em;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-pill);
-  transition: all var(--dur) var(--ease);
-}
-.tag::before { content: "#"; color: var(--accent); margin-right: 0.15em; opacity: 0.8; }
-.tag:hover { color: var(--text-strong); border-color: var(--accent); background: var(--accent-quiet); }
-
-/* ============================================================
    POST CARD / LIST ITEM  (Direction A — centered, excerpt visible)
    ============================================================ */
 .post-list { list-style: none; }
@@ -563,13 +544,6 @@ pre code { background: none; padding: 0; color: var(--text); }
 .fact dt { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted); }
 .fact dd { color: var(--text-soft); font-size: var(--fs-small); }
 @media (max-width: 559px) { .fact { grid-template-columns: 1fr; gap: var(--sp-1); } }
-
-/* ============================================================
-   TOPICS (TAGS) PAGE — SPEC-040
-   ============================================================ */
-.tag-cloud { display: flex; flex-wrap: wrap; gap: var(--sp-3); padding-block: var(--sp-5) var(--sp-7); }
-.tag-cloud .tag { font-size: var(--fs-small); padding: 0.5em 1em; }
-.tag-cloud .tag .count { color: var(--muted); margin-left: 0.5em; }
 
 /* ============================================================
    UTILITY
