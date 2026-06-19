@@ -24,7 +24,7 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 - [x] [SPEC-028 — Structured Data (JSON-LD)](SPECS.md#spec-028) — `BlogPosting` block only on single blog posts, built via `dict`/`jsonify`/`safeJS` (plain string interpolation inside `<script>` double-escapes under Hugo's contextual auto-escaping — verified and fixed)
 
 ## 5. RSS
-- [ ] [SPEC-029 — RSS Feed](SPECS.md#spec-029) — Hugo's default RSS output works (`/blog/index.xml` verified 200), but doesn't yet include full `content:encoded` per spec — needs a custom RSS template
+- [x] [SPEC-029 — RSS Feed](SPECS.md#spec-029) — custom `layouts/_default/rss.xml` adds `content:encoded` (full post HTML in CDATA) alongside the existing summary `description`, serves both `/index.xml` (site-level, via `site.RegularPages`) and `/blog/index.xml` (section-level); RSS autodiscovery `<link>` added to `head.html`; all three feeds (pt-br, en, home) verified well-formed XML. Note: literal `<?xml ?>` and `<![CDATA[`/`]]>` text needed `| safeHTML` — Hugo's html/template auto-escaper HTML-entity-encodes any `<` not followed by a recognized tag-start character
 
 ## 6. Analytics
 - [ ] [SPEC-030 — Umami Analytics Script](SPECS.md#spec-030) — no Umami account/website ID yet; `partials/analytics.html` not created
