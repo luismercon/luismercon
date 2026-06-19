@@ -6,7 +6,7 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 
 ## 1. Project init, structure, config
 - [x] [SPEC-001 — Hugo Project Initialization](SPECS.md#spec-001) — `hugo.yaml` builds clean with `hugo --minify`
-- [ ] [SPEC-002 — Directory Structure](SPECS.md#spec-002) — `content/`, `layouts/`, `assets/css/`, `archetypes/`, `i18n/` now exist; still missing `static/images/` (logo, favicon, og-default.png) and `.github/workflows/` (group 17)
+- [ ] [SPEC-002 — Directory Structure](SPECS.md#spec-002) — `content/`, `layouts/`, `assets/css/`, `archetypes/`, `i18n/` now exist; favicon/og-default images are generated via Hugo Pipes from `assets/images/favicon.png` (no `static/images/`, no `logo.svg`/`favicon.ico` — see CLAUDE.md/head.html) ; `.github/workflows/` still missing (group 17)
 - [x] [SPEC-003 — Permalink Configuration](SPECS.md#spec-003) — permalinks + 4-item main menu (incl. Topics, see SPEC-040) set in `hugo.yaml`
 
 ## 2. Design tokens, dark mode, fonts
@@ -18,10 +18,10 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 - [x] [SPEC-015 — Base Layout](SPECS.md#spec-015) — `layouts/_default/baseof.html` + partials; `hugo --minify` builds clean, dev server verified via curl
 
 ## 4. SEO (head.html)
-- [ ] [SPEC-025 — Canonical URLs](SPECS.md#spec-025)
-- [ ] [SPEC-026 — Meta Tags and Open Graph](SPECS.md#spec-026)
-- [ ] [SPEC-027 — Hreflang Tags](SPECS.md#spec-027)
-- [ ] [SPEC-028 — Structured Data (JSON-LD)](SPECS.md#spec-028)
+- [x] [SPEC-025 — Canonical URLs](SPECS.md#spec-025) — `<link rel="canonical">` in `layouts/partials/head.html`, falls back to `.Permalink` when `canonicalURL` is unset
+- [x] [SPEC-026 — Meta Tags and Open Graph](SPECS.md#spec-026) — OG + Twitter Card tags in `head.html`; `og:image` falls back to a Hugo Pipes-generated 1200x630 crop of `assets/images/favicon.png` when no page `images` are set
+- [x] [SPEC-027 — Hreflang Tags](SPECS.md#spec-027) — loops `.AllTranslations` (self-referencing tag included); verified pt-br/en pair on the sample post
+- [x] [SPEC-028 — Structured Data (JSON-LD)](SPECS.md#spec-028) — `BlogPosting` block only on single blog posts, built via `dict`/`jsonify`/`safeJS` (plain string interpolation inside `<script>` double-escapes under Hugo's contextual auto-escaping — verified and fixed)
 
 ## 5. RSS
 - [ ] [SPEC-029 — RSS Feed](SPECS.md#spec-029) — Hugo's default RSS output works (`/blog/index.xml` verified 200), but doesn't yet include full `content:encoded` per spec — needs a custom RSS template
