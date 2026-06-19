@@ -10,7 +10,7 @@ facts:
 
 <p class="article-lead" style="font-style:italic">Passei 13 anos como advogado antes de virar engenheiro de software. Escrevo aqui para entender o que estou a fazer enquanto o faço.</p>
 
-Sou um engenheiro de software que acredita que o melhor software é construído por quem entende o **porquê** antes do **como**. Essa convicção não veio da engenharia. Veio de 13 anos a exercer direito no Brasil, lendo sistemas complexos, traduzindo entre pessoas que falam línguas diferentes, e aprendendo que a precisão importa. Se quer saber a história completa, escrevi [aqui](https://luismercon.vercel.app/posts/from-lawyer-to-programmer).
+Sou um engenheiro de software que acredita que o melhor software é construído por quem entende o **porquê** antes do **como**. Essa convicção não veio da engenharia. Veio de 13 anos a exercer direito no Brasil, lendo sistemas complexos, traduzindo entre pessoas que falam línguas diferentes, e aprendendo que a precisão importa. Se quer saber a história completa, escrevi [aqui]({{< relref "blog/advogado-a-programador.md" >}}).
 
 Hoje trabalho na interseção entre **IA e engenharia de software**, explorando como agentes e modelos de linguagem estão a mudar não só o que construímos, mas como pensamos sobre construir.
 
