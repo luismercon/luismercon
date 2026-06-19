@@ -64,9 +64,15 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 - [x] [SPEC-019 — Homepage](SPECS.md#spec-019) — `layouts/index.html`, pulls posts via `site.GetPage "/blog"`
 
 ## 15. Responsive breakpoints
-- [ ] [SPEC-032 — Responsive Layout: Mobile](SPECS.md#spec-032) — `main.css` is fluid/`clamp()`-based rather than the original fixed-padding scheme; behavior not yet verified visually at each breakpoint (no screenshot tooling available this session)
-- [ ] [SPEC-033 — Responsive Layout: Tablet](SPECS.md#spec-033) — same caveat
-- [ ] [SPEC-034 — Responsive Layout: Desktop](SPECS.md#spec-034) — same caveat
+- [x] [SPEC-032 — Responsive Layout: Mobile](SPECS.md#spec-032) — verified visually via Playwright screenshots at 375px: hamburger menu, single-column layout, footer columns stack vertically (`.site-footer__top` wraps), TOC renders as a boxed callout. `main.css` uses fluid `clamp()` tokens instead of the original fixed `--space-4`/`--text-base` (per SPEC-012's note, this supersedes the old token names) — `--gutter` computes to 1.25rem (20px, clamp floor) and `--fs-body` to ~1.06rem at this width. "Social media iframes scale to full container width" no longer applies — Social Media was removed (group 12)
+- [x] [SPEC-033 — Responsive Layout: Tablet](SPECS.md#spec-033) — verified at 800px: horizontal nav (≥768px breakpoint in `main.css:183`), single-column layout, `--gutter` computes to 2.5rem (40px)
+- [x] [SPEC-034 — Responsive Layout: Desktop](SPECS.md#spec-034) — verified at 1280px: page content centered via `.wrap`/`.prose-wrap` (`max-width: var(--maxw-wide)`/`var(--maxw-prose)`), blog post body constrained to `--maxw-prose` (42rem, ~66ch) for comfortable reading width, TOC switches from boxed callout to sticky rail exactly at the 960px breakpoint (`main.css:289`, confirmed with screenshots at 959px vs 960px)
+
+**Note:** SPEC-021's text says the desktop TOC sits "to the left of the article," but `main.css:293`'s grid
+(`grid-template-columns: minmax(0, var(--maxw-prose)) 14rem`) places `.article-main` in column 1 and
+`.article-aside` in column 2 — the TOC renders to the *right* of the article body. User confirmed this is
+the intended layout (matches the Claude Design handoff bundle) — SPECS.md's "left" wording is simply
+outdated and is left as-is per project convention (BACKLOG.md is the status/deviation record, not SPECS.md).
 
 ## 16. Topics (tags) taxonomy
 - [ ] ~~SPEC-040 — Topics (Tags) Taxonomy Pages~~ — **dropped**: built and verified working, then removed by user decision — the user doesn't plan to use tags on blog posts. No `/tags/` route, templates, content, or `tags:` frontmatter field exist
