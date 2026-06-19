@@ -1,15 +1,17 @@
 ---
 title: "Sobre"
-description: "Engenheiro de software focado em modernização de sistemas e engenharia orientada por IA."
+description: "Engenheiro de software com passagem pelo direito, explorando como a IA está a mudar a forma de construir software."
 facts:
   - label: "Foco"
-    value: "Modernização de sistemas legados, ferramentas para programadores, IA aplicada a fluxos de engenharia."
+    value: "Engenharia orientada por IA, agentes de LLM, e o ofício de construir software com intenção."
   - label: "Escreve sobre"
-    value: "Ofício, arquitetura, e a prática de trabalhar ao lado de modelos de linguagem."
+    value: "IA aplicada à engenharia, mercado de tecnologia, carreira não-linear, e coisas que ainda não sei nomear."
 ---
 
-<p class="article-lead" style="font-style:italic">Construo e reconstruo software para viver, e escrevo para entender o que estou a fazer enquanto o faço.</p>
+<p class="article-lead" style="font-style:italic">Passei 13 anos como advogado antes de virar engenheiro de software. Escrevo aqui para entender o que estou a fazer enquanto o faço.</p>
 
-Sou um engenheiro de software focado em **engenharia orientada por IA** e no trabalho longo e pouco glamoroso de modernizar sistemas dos quais as empresas dependem. Grande parte da minha carreira foi passada dentro de bases de código mais antigas do que as equipas que as mantêm — aprendendo a tratá-las com a paciência que merecem, e a usar novas ferramentas sem perder a disciplina que as antigas ensinaram.
+Sou um engenheiro de software que acredita que o melhor software é construído por quem entende o **porquê** antes do **como**. Essa convicção não veio da engenharia. Veio de 13 anos a exercer direito no Brasil, lendo sistemas complexos, traduzindo entre pessoas que falam línguas diferentes, e aprendendo que a precisão importa. Se quer saber a história completa, escrevi [aqui](https://luismercon.vercel.app/posts/from-lawyer-to-programmer).
 
-Este site é onde penso em voz alta. Os textos são lentos, por vezes errados, e revistos quando aprendo melhor. Se algo aqui for útil para ti, esse é o objetivo.
+Hoje trabalho na interseção entre **IA e engenharia de software**, explorando como agentes e modelos de linguagem estão a mudar não só o que construímos, mas como pensamos sobre construir.
+
+Este blog é onde o LinkedIn não chega. Escrevo sobre IA, mercado de tecnologia, carreira, e às vezes coisas mais difíceis de categorizar. Escrevo em português e em inglês. Algumas coisas sobrevivem à tradução. Outras, genuinamente, não.

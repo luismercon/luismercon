@@ -1,15 +1,17 @@
 ---
 title: "About"
-description: "Software engineer focused on systems modernisation and AI-driven engineering."
+description: "Software engineer with a law background, exploring how AI is changing the way software gets built."
 facts:
   - label: "Focus"
-    value: "Legacy modernisation, developer tooling, applied AI in engineering workflows."
-  - label: "Writing on"
-    value: "Craft, architecture, and the practice of working alongside language models."
+    value: "AI-driven engineering, LLM agents, and the craft of building software with intention."
+  - label: "Writes about"
+    value: "AI applied to engineering, the tech market, non-linear careers, and things I don't yet know how to name."
 ---
 
-<p class="article-lead" style="font-style:italic">I build and rebuild software for a living, and I write to understand what I am doing while I do it.</p>
+<p class="article-lead" style="font-style:italic">I spent 13 years as a lawyer before becoming a software engineer. I write here to understand what I'm doing while I'm doing it.</p>
 
-I am a software engineer focused on **AI-driven engineering** and the long, unglamorous work of modernising systems that businesses depend on. Much of my career has been spent inside codebases older than the teams maintaining them — learning to treat them with the patience they deserve, and to use new tools without losing the discipline the old ones taught.
+I'm a software engineer who believes the best software is built by people who understand the **why** before the **how**. That conviction didn't come from engineering. It came from 13 years practicing law in Brazil, reading complex systems, translating between people who speak different languages, and learning that precision matters. If you want the full story, I wrote about it [here](https://luismercon.vercel.app/posts/from-lawyer-to-programmer).
 
-This site is where I think in public. The posts are slow, occasionally wrong, and revised when I learn better. If something here is useful to you, that is the whole point.
+Today I work at the intersection of **AI and software engineering**, exploring how agents and language models are changing not just what we build, but how we think about building.
+
+This blog is where LinkedIn doesn't reach. I write about AI, the tech market, career, and sometimes things that are harder to categorize. I write in both Portuguese and English. Some things survive translation. Others genuinely don't.
