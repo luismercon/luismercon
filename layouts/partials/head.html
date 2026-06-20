@@ -23,7 +23,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&amp;display=swap" rel="stylesheet">
+{{ $fontsHref := "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;1,300;1,400&display=swap" }}
+<link rel="preload" as="style" href="{{ $fontsHref }}">
+<link rel="stylesheet" href="{{ $fontsHref }}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{{ $fontsHref }}"></noscript>
 
 {{ $tokens := resources.Get "css/tokens.css" }}
 {{ $main := resources.Get "css/main.css" }}

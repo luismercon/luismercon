@@ -493,7 +493,7 @@ pre code { background: none; padding: 0; color: var(--text); }
 }
 .footer-nav { display: flex; flex-wrap: wrap; gap: var(--sp-5) var(--sp-7); }
 .footer-col { display: flex; flex-direction: column; gap: var(--sp-2); }
-.footer-col h4 { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: var(--sp-1); }
+.footer-col__label { font-family: var(--font-mono); font-size: var(--fs-meta); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: var(--sp-1); }
 .footer-col a { font-size: var(--fs-small); color: var(--text-soft); }
 .footer-col a:hover { color: var(--accent); }
 .site-footer__base {
