@@ -6,7 +6,7 @@ implemented and verified against its Given/When/Then criteria. Don't edit SPECS.
 
 ## 1. Project init, structure, config
 - [x] [SPEC-001 — Hugo Project Initialization](SPECS.md#spec-001) — `hugo.yaml` builds clean with `hugo --minify`
-- [ ] [SPEC-002 — Directory Structure](SPECS.md#spec-002) — `content/`, `layouts/`, `assets/css/`, `archetypes/`, `i18n/` now exist; favicon/og-default images are generated via Hugo Pipes from `assets/images/favicon.png` (no `static/images/`, no `logo.svg`/`favicon.ico` — see CLAUDE.md/head.html) ; `.github/workflows/` still missing (group 17)
+- [x] [SPEC-002 — Directory Structure](SPECS.md#spec-002) — `content/`, `layouts/`, `assets/css/`, `archetypes/`, `i18n/`, and `.github/workflows/` (group 17) all exist; the one accepted deviation is `static/images/` — favicon/og-default images are generated via Hugo Pipes from `assets/images/favicon.png` instead, no `logo.svg`/`favicon.ico` (see CLAUDE.md/head.html), already documented elsewhere so not blocking
 - [x] [SPEC-003 — Permalink Configuration](SPECS.md#spec-003) — `hugo.yaml` has the blog permalink and a 2-item main menu (Blog, About). SPECS.md describes a 4-item menu incl. Social Media and Topics; both were built and then deliberately removed by the user (see groups 12/16) — SPECS.md is left as-is per project convention, treat this entry as the current authority on the menu, not SPEC-003's text
 
 ## 2. Design tokens, dark mode, fonts
@@ -85,9 +85,9 @@ outdated and is left as-is per project convention (BACKLOG.md is the status/devi
 - [ ] ~~One social media embed~~ — n/a, Social Media was dropped (see group 12)
 
 ## 19. Final validation
-- [ ] Lighthouse audit
-- [ ] Open Graph debugger
-- [ ] RSS validator
+- [x] Lighthouse audit — ran against the live homepage and the blog post (`npx lighthouse`, mobile/simulated-throttling default). Found and fixed three real issues along the way: a footer heading-order skip (`<h4>` → `<p class="footer-col__label">`), a WCAG 2.5.3 label-in-name mismatch on the language switcher (`aria-label="Idioma"` didn't contain the visible "EN"), and ~2.3s of render-blocking savings from a synchronous Google Fonts `<link>` (switched to preload + `media=print`/`onload` swap + `noscript` fallback). Final scores both pages: Performance 85, Accessibility 100, Best Practices 100, SEO 100. The remaining Performance gap is FCP/LCP (~3.3s) under Lighthouse's default aggressive mobile/slow-4G simulation (150ms RTT, ~1.6Mbps, 4x CPU slowdown) — confirmed via `render-blocking-insight` showing zero further findings post-fix, so this is inherent network-RTT cost under a pessimistic lab profile, not a code defect; not chased further per the one-time-validation scope (see group discussion)
+- [x] Open Graph debugger — couldn't drive Meta's Sharing Debugger / LinkedIn's Post Inspector directly (both require a logged-in account); instead verified what they'd show by curling the live homepage and blog post and inspecting the actual `<meta>` tags: `og:title`, `og:description`, `og:type` (`website`/`article` correctly differ), `og:url`, `og:image` (confirmed 1200×630 PNG, returns 200), `og:locale`, plus `twitter:card`/`twitter:title`/`twitter:description` — all present and well-formed. Recommend the user also paste a live post URL into Meta's Sharing Debugger and LinkedIn's Post Inspector themselves for the actual cached visual-preview check, since that part needs a real account
+- [x] RSS validator — W3C Feed Validator (validator.w3.org/feed) against all three feeds. Found and fixed a real bug: `atom:link` used `.Permalink` (the HTML page URL) instead of the feed's own XML URL, now `(.OutputFormats.Get "RSS").Permalink`. `/blog/index.xml` and `/en/blog/index.xml` now validate with zero warnings; `/index.xml` (site-level) still shows a "Self reference doesn't match document location" warning despite the `atom:link` href provably matching the actual served URL (confirmed via direct `curl`, no redirects) — likely a known false-positive in the W3C validator's decades-old codebase against CDN-fronted sites (GitHub Pages serves via Fastly); not pursued further since the feed itself is verifiably correct and still reports "valid"
 
 ## Reference & process specs
 Not part of the numbered build sequence — describe ongoing author workflows and project docs rather than a
