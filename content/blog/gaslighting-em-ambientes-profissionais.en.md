@@ -3,7 +3,7 @@ title: "When Good Intentions Fail: Understanding Gaslighting Dynamics in Profess
 slug: "gaslighting-in-professional-settings"
 date: 2024-04-26T12:48:06+01:00
 description: "The term gaslighting comes from the 1938 play Gas Light, written by Patrick Hamilton, and the 1944 film directed by George Cukor. In the story, a husband manipulates his surroundings to make his wife question her sanity. Originating in fiction, the concept carries a Manichean bias, depicting a clear villain (the husband) and a victim (the wife)."
-draft: true
+draft: false
 canonicalURL: ""
 images: []
 ---
