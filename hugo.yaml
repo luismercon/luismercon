@@ -36,10 +36,10 @@ taxonomies: {}
 menus:
   main:
     - name: "Blog"
-      url: "/blog/"
+      pageRef: "/blog"
       weight: 1
     - name: "About"
-      url: "/about/"
+      pageRef: "/about"
       weight: 2
 
 outputs:

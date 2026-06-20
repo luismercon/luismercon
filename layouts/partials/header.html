@@ -3,11 +3,11 @@
     <button class="icon-btn menu-btn" id="menuBtn" aria-label="{{ i18n "open_menu" }}" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
     </button>
-    <a class="wordmark site-brand" href="{{ "/" | relLangURL }}">{{ .Site.Params.author }}</a>
+    <a class="wordmark site-brand" href="{{ .Site.Home.RelPermalink }}">{{ .Site.Params.author }}</a>
     <nav class="nav nav--primary" aria-label="Primary">
       <ul class="nav__links">
         {{ range .Site.Menus.main }}
-        <li><a href="{{ .URL | relLangURL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        <li><a href="{{ .Page.RelPermalink }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
         {{ end }}
       </ul>
     </nav>
@@ -20,7 +20,7 @@
   <div class="nav__drawer" id="drawer">
     <ul>
       {{ range .Site.Menus.main }}
-      <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+      <li><a href="{{ .Page.RelPermalink }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </div>
