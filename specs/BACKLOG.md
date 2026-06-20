@@ -93,6 +93,6 @@ outdated and is left as-is per project convention (BACKLOG.md is the status/devi
 Not part of the numbered build sequence — describe ongoing author workflows and project docs rather than a
 one-time build artifact. Check off once the workflow has been exercised at least once / the doc exists.
 - [x] [SPEC-039 — CLAUDE.md Project File](SPECS.md#spec-039) — done, `CLAUDE.md` exists at repo root
-- [ ] [SPEC-036 — Blog Post Publication Workflow](SPECS.md#spec-036)
+- [ ] [SPEC-036 — Blog Post Publication Workflow](SPECS.md#spec-036) — workflow's first step is now `bash scripts/new-post.sh <slug>` (scaffolds both `content/blog/<slug>.md` and `<slug>.en.md` in one command, via `archetypes/blog.md` + the new `archetypes/blog-en.md`) rather than SPECS.md's two separate `hugo new` calls; still unchecked until exercised end-to-end by actually publishing a second real post
 - [ ] ~~SPEC-037 — Social Media Publication Workflow~~ — **dropped**, Social Media was removed entirely (see group 12); no publication workflow exists or is needed
 - [x] [SPEC-038 — Claude Design Handoff Workflow](SPECS.md#spec-038) — exercised end-to-end: imported project "Luis Brand" via the Claude Design connector, tokens translated into `assets/css/`, templates built following the bundle

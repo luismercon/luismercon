@@ -36,8 +36,9 @@ not placeholders — see "Design tokens" below before writing any template marku
 
 ## Commands
 
-- `hugo new blog/<slug>.md` — scaffold a pt-BR blog post from `archetypes/blog.md`
-- `hugo new blog/<slug>.en.md` — scaffold the English translation (same base filename + `.en`)
+- `bash scripts/new-post.sh <slug>` — scaffold both the pt-BR and English blog post files at once (recommended — guarantees the translation pair always exists, even if one stays a draft)
+- `hugo new blog/<slug>.md` — scaffold just the pt-BR post from `archetypes/blog.md`
+- `hugo new blog/<slug>.en.md --kind blog-en` — scaffold just the English translation from `archetypes/blog-en.md` (includes the required `slug:` field; the plain `archetypes/blog.md` doesn't have one)
 - `hugo server` — local dev server with live reload
 - `hugo --minify` — production build (output to `./public`, what CI runs)
 
@@ -55,9 +56,11 @@ There is no package manager, linter, or test suite in this project — it's a st
 ### Content models
 
 One content type with a strict required-frontmatter contract (see SPEC-008/009 for exact fields):
-`content/blog/*.md` (title, date, description required; tags/draft/canonicalURL/images optional).
-`archetypes/blog.md` exists so `hugo new blog/<slug>.md` scaffolds it correctly — keep the archetype in sync
-if the frontmatter contract changes. No `tags` field — Topics (tags) was removed, see "Site nav" below.
+`content/blog/*.md` (title, date, description required; tags/draft/canonicalURL/images optional). Two
+archetypes back it: `archetypes/blog.md` (pt-BR, via `hugo new blog/<slug>.md`) and `archetypes/blog-en.md`
+(English, via `hugo new blog/<slug>.en.md --kind blog-en`) — the English one adds the `slug:` field SPEC-009
+requires. `scripts/new-post.sh <slug>` wraps both calls into one command. Keep both archetypes in sync if the
+frontmatter contract changes. No `tags` field — Topics (tags) was removed, see "Site nav" below.
 
 ### Design tokens
 
@@ -105,7 +108,8 @@ Push to `main` triggers `.github/workflows/deploy.yml`: install Hugo extended, `
 ## Reference: directory layout (current — not yet fully matching SPEC-002's target tree)
 
 ```
-├── archetypes/blog.md
+├── .github/workflows/deploy.yml
+├── archetypes/{blog.md, blog-en.md}
 ├── assets/css/{tokens.css, main.css}
 ├── content/
 │   ├── about/_index.md, _index.en.md
@@ -113,15 +117,16 @@ Push to `main` triggers `.github/workflows/deploy.yml`: install Hugo extended, `
 ├── data/social.yaml
 ├── i18n/{pt-BR.yaml, en.yaml}
 ├── layouts/
-│   ├── _default/baseof.html
+│   ├── _default/{baseof.html, rss.xml}
 │   ├── about/list.html
 │   ├── blog/ (list.html, single.html)
-│   ├── partials/ (head.html, header.html, footer.html,
+│   ├── partials/ (head.html, header.html, footer.html, analytics.html,
 │   │              language-switcher.html, post-meta.html, post-list.html)
 │   └── index.html
 ├── hugo.yaml
+├── scripts/new-post.sh
 └── specs/{SPECS.md, BACKLOG.md}
 ```
 
-Still missing: `.github/workflows/deploy.yml` (group 17), `static/images/` (logo/favicon/OG image),
-`layouts/partials/analytics.html` (group 6).
+Still missing: `static/images/` (logo/favicon/OG image) — `assets/images/favicon.png` + Hugo Pipes covers
+this functionally instead, see SPEC-002's note in `specs/BACKLOG.md`.

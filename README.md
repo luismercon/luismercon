@@ -35,15 +35,21 @@ hugo --minify
 ## Adding content
 
 ```bash
-# New pt-BR blog post (default language)
-hugo new blog/my-post-slug.md
-
-# Its English translation — same base filename, .en suffix
-hugo new blog/my-post-slug.en.md
+# Scaffolds both the pt-BR and English files at once (recommended)
+bash scripts/new-post.sh my-post-slug
 ```
 
-The English file needs a `slug:` field in its frontmatter (for a translated, SEO-friendly URL) — see
-`specs/SPECS.md` (SPEC-005, SPEC-008, SPEC-009) for the full frontmatter contract. Posts are filed under
+This creates `content/blog/my-post-slug.md` (pt-BR) and `content/blog/my-post-slug.en.md` (English) together,
+both as drafts — so the translation pair always exists, even if you finish one language before the other.
+The English file already has an empty `slug:` field to fill in (a translated, SEO-friendly URL — required per
+SPEC-009). To scaffold just one language instead:
+
+```bash
+hugo new blog/my-post-slug.md                       # pt-BR only
+hugo new blog/my-post-slug.en.md --kind blog-en      # English only (needs --kind for the slug field)
+```
+
+See `specs/SPECS.md` (SPEC-005, SPEC-008, SPEC-009) for the full frontmatter contract. Posts are filed under
 `content/blog/`.
 
 Draft posts (`draft: true`, the archetype default) don't appear in `hugo server` or `hugo --minify` unless
