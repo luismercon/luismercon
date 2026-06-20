@@ -1,7 +1,7 @@
 ---
-title: "Quando as boas intenções falham: Compreendendo a dinâmica do *gaslighting* em ambientes profissionais"
+title: "Quando as boas intenções falham: Compreendendo a dinâmica do gaslighting em ambientes profissionais"
 date: 2024-04-26T12:48:06+01:00
-description: "O termo *gaslighting* vem da peça teatral de 1938 *Gas Light*, escrita por Patrick Hamilton, e do filme de 1944 dirigido por George Cukor. Na história, um marido manipula o ambiente ao redor para fazer sua esposa questionar a própria sanidade. Originado na ficção, o conceito carrega um viés maniqueísta, retratando um vilão claro (o marido) e uma vítima (a esposa)."
+description: "O termo gaslighting vem da peça teatral de 1938 *Gas Light*, escrita por Patrick Hamilton, e do filme de 1944 dirigido por George Cukor. Na história, um marido manipula o ambiente ao redor para fazer sua esposa questionar a própria sanidade. Originado na ficção, o conceito carrega um viés maniqueísta, retratando um vilão claro (o marido) e uma vítima (a esposa)."
 draft: false
 canonicalURL: ""
 images: []
